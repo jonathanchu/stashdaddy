@@ -121,6 +121,8 @@ INSTALLED_APPS = (
 
     # third-party packages,
     'gunicorn',
+    'registration',
+    'south',
 
     # stashdaddy apps
 )
