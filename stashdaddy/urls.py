@@ -5,7 +5,11 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
+    # home
     url(r'^$', direct_to_template, {'template': 'home.html'}, name='home'),
+
+    # accounts and registration
+    (r'^accounts/', include('registration.backends.default.urls')),
 
     # admin
     url(r'^admin/', include(admin.site.urls)),

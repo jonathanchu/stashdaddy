@@ -69,6 +69,9 @@ STATICFILES_FINDERS = (
 ## USERS + AUTHENTICATION
 # ---------------------------------------------------------------------------
 
+ACCOUNT_ACTIVATION_DAYS = 7
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+
 SECRET_KEY = 'm0l%vh6%zg$ngj%st_vbt&amp;u1o$%v%!#xq=#+7_+9ml)aaint4)'
 
 # ## INTERNALS
@@ -123,10 +126,11 @@ INSTALLED_APPS = (
     'django_assets',
     'gunicorn',
     'registration',
+    'social_auth',
     'south',
 
     # stashdaddy apps
-
+    'accounts',
 )
 
 ## EXTERNAL RESOURCE AUTHENTICATION
