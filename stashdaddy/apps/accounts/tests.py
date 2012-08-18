@@ -7,9 +7,9 @@ class ViewsTestCase(TestCase):
         self.client = Client()
 
     def test_MyView(self):
-        User.objects.create_user('fakename', 'fake@pukkared.com', 'mypassword')
+        User.objects.create_user('bradpitt', 'brad@pitt.com', 'mypassword')
 
-        #use test client to perform login
-        user = self.client.login(username='fakename', password='mypassword')
+        # use test client to perform login
+        user = self.client.login(username='bradpitt', password='mypassword')
 
         response = self.client.post('/accounts/profile/')
