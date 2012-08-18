@@ -32,8 +32,10 @@ local_settings.py
 
 # Project specific
 stashdaddy/media/
-stashdaddy/static/.webassets-cache
+stashdaddy/static/.webassets-cache/
+stashdaddy/gen/
 src/
+celerybeat-schedule.db
 
 # Mac OS X specific
 .DS_Store

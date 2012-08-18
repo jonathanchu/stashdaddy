@@ -74,7 +74,7 @@ AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 
 SECRET_KEY = 'm0l%vh6%zg$ngj%st_vbt&amp;u1o$%v%!#xq=#+7_+9ml)aaint4)'
 
-# ## INTERNALS
+## INTERNALS
 # ---------------------------------------------------------------------------
 
 TEMPLATE_LOADERS = (
@@ -107,8 +107,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 ROOT_URLCONF = 'stashdaddy.urls'
 
-
 WSGI_APPLICATION = 'stashdaddy.wsgi.application'
+
+## TASK QUEUE
+# ---------------------------------------------------------------------------
+
+BROKER_BACKEND = 'django'
 
 ## APPLICATIONS
 # ---------------------------------------------------------------------------
@@ -124,7 +128,9 @@ INSTALLED_APPS = (
 
     # third-party packages,
     'django_assets',
+    'djcelery',
     'gunicorn',
+    'kombu.transport.django',
     'registration',
     'social_auth',
     'south',
@@ -138,6 +144,8 @@ INSTALLED_APPS = (
 
 TWITTER_CONSUMER_KEY = ''
 TWITTER_CONSUMER_SECRET = ''
+
+POCKET_API_KEY = '576A5cmndK235I85dtp3702j72T9x6d7'
 
 ## ANALYTICS
 # ---------------------------------------------------------------------------

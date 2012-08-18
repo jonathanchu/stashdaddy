@@ -8,8 +8,11 @@ urlpatterns = patterns('',
     # home
     url(r'^$', direct_to_template, {'template': 'home.html'}, name='home'),
 
-    # accounts and registration
+    # accounts
     (r'^accounts/', include('registration.backends.default.urls')),
+
+    # profile
+    url(r'^accounts/profile/', 'accounts.views.account', name='profile'),
 
     # admin
     url(r'^admin/', include(admin.site.urls)),
