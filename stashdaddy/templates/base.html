@@ -18,7 +18,7 @@
     <link rel="apple-touch-icon" href="{{ STATIC_URL }}img/apple-touch-icon.png">
 
     {% load assets %}
-    {% assets filter="less,yui_css", output="gen/site.css", "less/normalize.less", "less/base.less" %}
+    {% assets filters="less,yui_css", output="gen/site.css", "less/normalize.less", "less/base.less" %}
     <link re="stylesheet" href="{{ ASSET_URL }}">
     {% endassets %}
     {% block extra_head %}{% endblock %}
