@@ -120,6 +120,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # third-party packages,
+    'django_assets',
     'gunicorn',
     'registration',
     'south',
