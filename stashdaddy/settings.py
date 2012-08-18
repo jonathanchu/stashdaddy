@@ -125,6 +125,7 @@ INSTALLED_APPS = (
     'south',
 
     # stashdaddy apps
+
 )
 
 ## EXTERNAL RESOURCE AUTHENTICATION
@@ -132,6 +133,11 @@ INSTALLED_APPS = (
 
 TWITTER_CONSUMER_KEY = ''
 TWITTER_CONSUMER_SECRET = ''
+
+## ANALYTICS
+# ---------------------------------------------------------------------------
+
+GAUGES_SITE_ID = '502f8335f5a1f5622a000002'
 
 ## EMAIL
 # ---------------------------------------------------------------------------
