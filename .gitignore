@@ -33,8 +33,6 @@ local_settings.py
 # Project specific
 stashdaddy/media/
 stashdaddy/static/.webassets-cache
-stashdaddy/static/gen/packed.js
-stashdaddy/static/gen/site.css
 src/
 
 # Mac OS X specific

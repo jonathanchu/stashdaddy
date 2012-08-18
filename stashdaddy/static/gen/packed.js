@@ -1,0 +1,1 @@
+var App={init:function(){var a=window.location.pathname;var c=a.split("/");var b=c[1];switch(b){case"":window.setTimeout(App.pageHome,100);break;default:}},pageHome:function(){console.log("homepage")}};$(document).ready(function(){App.init()});
