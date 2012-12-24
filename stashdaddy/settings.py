@@ -7,7 +7,7 @@ import dj_database_url
 ## DEBUGGING
 # ---------------------------------------------------------------------------
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
@@ -54,7 +54,7 @@ MEDIA_URL = '/media/'
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
 STATIC_ROOT = './static/'
-STATIC_URL = '/static/'
+STATIC_URL = 'http://stashdaddy.herokuapp.com/static/'
 
 STATICFILES_DIRS = (
     join_path(PROJECT, 'static'),
@@ -63,7 +63,8 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    # 'django.contrib.staticfiles.finders.DefaultStorageFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 ## USERS + AUTHENTICATION
@@ -127,7 +128,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     # third-party packages,
-    'django_assets',
+    'compressor',
     'djcelery',
     'gunicorn',
     'kombu.transport.django',
@@ -155,6 +156,23 @@ GAUGES_SITE_ID = '502f8335f5a1f5622a000002'
 ## EMAIL
 # ---------------------------------------------------------------------------
 
+
+## COMPRESSOR SETTINGS
+# ---------------------------------------------------------------------------
+
+COMPRESS_ENABLED = True
+
+COMPRESS_PRECOMPILERS = (
+   ('text/less', 'lessc {infile} {outfile}'),
+)
+
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.cssmin.CSSMinFilter'
+]
+
+COMPRESS_JS_FILTERS = [
+    'compressor.filters.jsmin.JSMinFilter'
+]
 
 ## LOGGING
 # ---------------------------------------------------------------------------

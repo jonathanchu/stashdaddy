@@ -4,6 +4,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 STATIC_ROOT = '/Users/jonathan/projects/stashdaddy.heroku.com/static/'
+STATIC_URL = 'http://127.0.0.1:8000/static/'
 
 DATABASES = {
     'default': {
@@ -48,3 +49,5 @@ DEBUG_TOOLBAR_CONFIG = {
 }
 
 GAUGES_SITE_ID = False
+
+COMPRESS_ENABLED = False

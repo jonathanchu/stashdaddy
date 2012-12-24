@@ -32,8 +32,7 @@ local_settings.py
 
 # Project specific
 stashdaddy/media/
-stashdaddy/static/.webassets-cache/
-stashdaddy/gen/
+stashdaddy/static/CACHE/
 src/
 celerybeat-schedule.db
 

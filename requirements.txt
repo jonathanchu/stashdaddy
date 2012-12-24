@@ -7,7 +7,9 @@ billiard==2.7.3.12
 celery==3.0.6
 distribute==0.6.27
 dj-database-url==0.2.1
+django-appconf==0.5
 django-celery==3.0.6
+django-compressor==1.2
 django-debug-toolbar==0.9.4
 django-extensions==0.9
 django-registration==0.8
@@ -21,6 +23,5 @@ pycrypto==2.6
 python-dateutil==1.5
 python-openid==2.2.5
 ssh==1.7.14
-webassets==0.7.1
 wsgiref==0.1.2
 yuicompressor==2.4.7

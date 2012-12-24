@@ -17,10 +17,11 @@
     <link rel="shortcut icon" href="{{ STATIC_URL }}img/favicon.ico">
     <link rel="apple-touch-icon" href="{{ STATIC_URL }}img/apple-touch-icon.png">
 
-    {% load assets %}
-    {% assets filters="less,yui_css", output="gen/site.css", "less/normalize.less", "less/base.less" %}
-    <link rel="stylesheet" href="{{ ASSET_URL }}">
-    {% endassets %}
+    {% load compress %}
+    {% compress css %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}less/normalize.less" type="text/less" media="all" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL }}less/base.less" type="text/less" media="all" charset="utf-8">
+    {% endcompress %}
     {% block extra_head %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
@@ -41,9 +42,9 @@
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 
     {% block extra_body %}{% endblock %}
-    {% assets filters="yui_js", output="gen/packed.js", "js/stashdaddy.js" %}
-    <script type="text/javascript" src="{{ ASSET_URL }}"></script>
-    {% endassets %}
+    {% compress js %}
+    <script src="{{ STATIC_URL }}js/stashdaddy.js" type="text/javascript" charset="utf-8"></script>
+    {% endcompress %}
 
     <script type="text/javascript">
         $(document).ready(function() {
