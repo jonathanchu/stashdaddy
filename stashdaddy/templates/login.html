@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <form action ="{% url django.contrib.auth.views.login %}" method="POST">
+    {{ form.username.label_tag }}
+    {{ form.username }}
+
+    {{ form.password.label_tag }}
+    {{ form.password }}
+
+    <input type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+{% endblock %}

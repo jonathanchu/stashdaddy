@@ -1,9 +1,8 @@
-# Python
+# Python bytecode
 *.py[co]
 
 # Packages
-*.egg
-*.egg-info
+*.egg*
 dist
 build
 eggs
@@ -27,14 +26,13 @@ pip-log.txt
 # Django
 *.log
 *.pot
-*.pyc
-local_settings.py
 
 # Project specific
 stashdaddy/media/
-stashdaddy/static/CACHE/
+stashdaddy/assets/CACHE/
 src/
 celerybeat-schedule.db
+*.db
 
 # Mac OS X specific
 .DS_Store
