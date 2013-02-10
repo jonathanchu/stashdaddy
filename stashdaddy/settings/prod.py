@@ -17,4 +17,5 @@ AWS_EXPIREY = 60 * 60 * 24 * 7
 AWS_HEADERS = {'Cache-Control': 'max-age=%d, s-maxage=%d, must-revalidate' % (AWS_EXPIREY, AWS_EXPIREY)}
 STATIC_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
 
+COMPRESS_ENABLED = False
 DEBUG = True
