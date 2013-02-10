@@ -5,6 +5,7 @@ Unipath==0.2.1
 amqplib==1.0.2
 anyjson==0.3.3
 billiard==2.7.3.12
+boto==2.8.0
 celery==3.0.6
 distribute==0.6.27
 dj-database-url==0.2.1
@@ -18,6 +19,7 @@ django-extensions==0.9
 django-forms-bootstrap==2.0.3.post1
 django-registration==0.8
 django-social-auth==0.7.4
+django-storages==1.1.6
 django-taggit==0.9.3
 django-tastypie==0.9.11
 gunicorn==0.14.6
