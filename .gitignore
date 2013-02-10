@@ -29,6 +29,7 @@ pip-log.txt
 # Project specific
 stashdaddy/media/
 stashdaddy/assets/CACHE/
+stashdaddy/static/
 src/
 celerybeat-schedule.db
 *.db
