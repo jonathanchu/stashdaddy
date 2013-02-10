@@ -1,6 +1,23 @@
 # import S3
 from .base import *
 
+from django.core.files.storage import get_storage_class
+from storages.backends.s3boto import S3BotoStorage
+
+class CachedS3BotoStorage(S3BotoStorage):
+    """
+    S3 storage backend that saves the files locally, too.
+    """
+    def __init__(self, *args, **kwargs):
+        super(CachedS3BotoStorage, self).__init__(*args, **kwargs)
+        self.local_storage = get_storage_class(
+            "compressor.storage.CompressorFileStorage")()
+
+    def save(self, name, content):
+        name = super(CachedS3BotoStorage, self).save(name, content)
+        self.local_storage._save(name, content)
+        return name
+
 # AWS credentials
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
 AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
@@ -8,7 +25,8 @@ AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 
 # S3 storage
 INSTALLED_APPS.append('storages')
-STATICFILES_STORAGE = DEFAULT_FILE_STORAGE = COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# STATICFILES_STORAGE = DEFAULT_FILE_STORAGE = COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+STATICFILES_STORAGE = DEFAULT_FILE_STORAGE = COMPRESS_STORAGE = CachedS3BotoStorage
 # AWS_CALLING_FORMAT = S3.CallingFormat.SUBDOMAIN
 AWS_AUTO_CREATE_BUCKET = True
 AWS_QUERYSTRING_AUTH = False
