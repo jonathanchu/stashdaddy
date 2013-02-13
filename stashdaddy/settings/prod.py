@@ -10,7 +10,7 @@ AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
 # S3 storage
 INSTALLED_APPS.append('storages')
 # STATICFILES_STORAGE = DEFAULT_FILE_STORAGE = COMPRESS_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
-STATICFILES_STORAGE = DEFAULT_FILE_STORAGE = COMPRESS_STORAGE = 'storage.CachedS3StaticStorage'
+STATICFILES_STORAGE = DEFAULT_FILE_STORAGE = COMPRESS_STORAGE = 'mystorage.CachedS3StaticStorage'
 # AWS_CALLING_FORMAT = S3.CallingFormat.SUBDOMAIN
 AWS_AUTO_CREATE_BUCKET = True
 AWS_QUERYSTRING_AUTH = False
@@ -19,3 +19,5 @@ AWS_HEADERS = {'Cache-Control': 'max-age=%d, s-maxage=%d, must-revalidate' % (AW
 STATIC_URL = 'https://s3.amazonaws.com/%s/' % AWS_STORAGE_BUCKET_NAME
 
 DEBUG = True
+
+COMPRESS_OFFLINE = True
