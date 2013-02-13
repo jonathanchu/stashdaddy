@@ -120,6 +120,7 @@ BROKER_BACKEND = 'django'
 
 # COMPRESSOR SETTINGS
 COMPRESS_ENABLED = True
+COMPRESS_OFFLINE = True
 COMPRESS_ROOT = PROJECT_ROOT.child('assets')
 COMPRESS_PRECOMPILERS = (
    ('text/less', 'lessc {infile} {outfile}'),
