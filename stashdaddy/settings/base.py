@@ -1,6 +1,7 @@
 import os
 import sys
-import dj_database_url
+
+from postgresify import postgresify
 from unipath import Path
 
 # BASIC SETUP
@@ -17,7 +18,7 @@ USE_L10N = True
 USE_TZ = True
 
 # DATABASES
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+DATABASES = postgresify()
 
 # MEDIA, ASSETS, ETC.
 MEDIA_ROOT = PROJECT_ROOT.child('media')
@@ -78,6 +79,7 @@ INSTALLED_APPS = [
     # stashdaddy apps
     'accounts',
     'bookmarks',
+    'core',
 ]
 
 # LOGGING
