@@ -1,5 +1,5 @@
 from django.conf.urls import patterns, include, url
-from django.views.generic.simple import direct_to_template
+from django.views.generic import TemplateView
 
 from django.contrib import admin
 from bookmarks.views import BookmarkList, BookmarkCreate, MyBookmarks, BookmarkEdit
@@ -10,7 +10,7 @@ bookmark_resource = BookmarkResource()
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^$',                         direct_to_template, {'template': 'home.html'}, name='home'),
+    url(r'^$',                         TemplateView.as_view(template_name='home.html'), name='home'),
     # url(r'^(?P<username>[\-\.\w]+)/$', BookmarkList.as_view(),   name='bookmarks_list'),
     url(r'^new/$',                     BookmarkCreate.as_view(), name='bookmark_create'),
     url(r'^mine/$',                    MyBookmarks.as_view(),     name='bookmarks_list_mine'),
@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     (r'^api/', include(bookmark_resource.urls)),
 
     # accounts
-    (r'^accounts/',                    include('registration.backends.default.urls')),
+    # (r'^accounts/',                    include('registration.backends.default.urls')),
 
     # profile
     url(r'^accounts/profile/', 'accounts.views.account', name='profile'),

@@ -2,7 +2,8 @@ from django.conf.urls.defaults import patterns, include, url
 from . import views
 
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^$',                  views.BookmarkList.as_view(),   name='bookmarks_list'),
     url(r'^new/$',              views.BookmarkCreate.as_view(), name='bookmark_create'),
     url(r'^mine/$',             views.MyListings.as_view(),     name='bookmarks_list_mine'),

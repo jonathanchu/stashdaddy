@@ -70,11 +70,9 @@ INSTALLED_APPS = [
     'django_forms_bootstrap',
     'gunicorn',
     'kombu.transport.django',
-    'registration',
-    'social_auth',
     'south',
     'taggit',
-    'tastypie',
+    # 'tastypie',
 
     # stashdaddy apps
     'accounts',
@@ -109,6 +107,7 @@ LOGGING = {
 
 # AUTH STUFF
 ACCOUNT_ACTIVATION_DAYS = 7
+AUTH_USER_MODEL = 'accounts.CustomUser'
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 TWITTER_CONSUMER_KEY = ''
 TWITTER_CONSUMER_SECRET = ''
