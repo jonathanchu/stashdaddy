@@ -1,4 +1,4 @@
-Django==1.4.3
+Django==1.5c1
 Fabric==1.4.3
 South==0.7.6
 Unipath==0.2.1
@@ -18,11 +18,9 @@ django-debug-toolbar==0.9.4
 django-extensions==0.9
 django-forms-bootstrap==2.0.3.post1
 django-heroku-postgresify==0.3
-django-registration==0.8
-django-social-auth==0.7.4
 django-storages==1.1.6
 django-taggit==0.9.3
-django-tastypie==0.9.11
+-e git://github.com/toastdriven/django-tastypie.git@2b13147715347d8239bbe73943be0eae65c8a43b#egg=django_tastypie-dev
 gunicorn==0.14.6
 httplib2==0.7.4
 kombu==2.4.0
