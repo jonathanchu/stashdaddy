@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 import warnings
 
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, UserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, UserManager, AnonymousUser
 from django.core.mail import send_mail
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -38,7 +38,7 @@ class CustomUserManager(BaseUserManager):
 
 
 class CustomUser(AbstractBaseUser, PermissionsMixin):
-    email = models.EmailField(_('email address'), max_length=254)
+    email = models.EmailField(_('email address'), max_length=254, unique=True)
     first_name = models.CharField(_('first name'), max_length=30, blank=True)
     last_name = models.CharField(_('last name'), max_length=30, blank=True)
     is_staff = models.BooleanField(_('staff status'), default=False,
@@ -112,33 +112,3 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
             except (ImportError, ImproperlyConfigured):
                 raise SiteProfileNotAvailable
         return self._profile_cache
-
-
-# class UserProfile(models.Model):
-#     """
-#     Extends the ``User`` model to allow for additional user attributes
-#     """
-#     user = models.OneToOneField(User, related_name='profile')
-#     first_name = models.CharField(blank=True, null=True, max_length=255)
-#     last_name = models.CharField(blank=True, null=True, max_length=255)
-#     email = models.EmailField(blank=True, null=True)
-#     created_at = models.DateTimeField(auto_now=True, editable=False)
-#     updated_at = models.DateTimeField(auto_now=True)
-
-#     class Meta:
-#         verbose_name = 'profile'
-#         verbose_name_plural = 'profiles'
-
-#     def __unicode__(self):
-#         if self.user.get_full_name():
-#             return unicode(self.user.get_full_name())
-#         else:
-#             return unicode(self.user.username)
-
-# def create_profile(sender, instance, **kwargs):
-#     """
-#     Create a user profile object each time a User is created.
-#     """
-#     UserProfile.objects.get_or_create(user=instance)
-
-# post_save.connect(create_profile, sender=User)
