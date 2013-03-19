@@ -1,5 +1,6 @@
 from .base import *
 
+DEBUG = TEMPLATE_DEBUG = True
 
 # AWS credentials
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
