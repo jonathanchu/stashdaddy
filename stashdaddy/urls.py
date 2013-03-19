@@ -1,4 +1,4 @@
-from django.conf.urls import patterns, include, url
+from django.conf.urls import include, patterns, url
 from django.views.generic import TemplateView
 
 from django.contrib import admin
@@ -18,10 +18,7 @@ urlpatterns = patterns('',
     (r'^api/', include(bookmark_resource.urls)),
 
     # accounts
-    # (r'^accounts/',                    include('registration.backends.default.urls')),
-
-    # profile
-    url(r'^accounts/profile/', 'accounts.views.account', name='profile'),
+    (r'^accounts/',                    include('accounts.urls')),
 
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
