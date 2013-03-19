@@ -1,3 +1,4 @@
+Django==1.5
 Fabric==1.4.3
 South==0.7.6
 Unipath==0.2.1
@@ -32,6 +33,3 @@ python-dateutil==1.5
 python-openid==2.2.5
 ssh==1.7.14
 wsgiref==0.1.2
-
-# Django 1.5 rc
-http://www.djangoproject.com/m/releases/1.5/Django-1.5c1.tar.gz#egg=django
