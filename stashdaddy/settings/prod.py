@@ -1,7 +1,7 @@
 from .base import *
 
 
-ALLOWED_HOSTS = ['http://stashdaddy.herokuapp.com/']
+ALLOWED_HOSTS = ['stashdaddy.herokuapp.com']
 
 # AWS credentials
 AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
