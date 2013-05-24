@@ -3,10 +3,10 @@ from django.views.generic import TemplateView
 
 from django.contrib import admin
 from bookmarks.views import BookmarkList, BookmarkCreate, MyBookmarks, BookmarkEdit
-from bookmarks.api import BookmarkResource
+# from bookmarks.api import BookmarkResource
 
 
-bookmark_resource = BookmarkResource()
+# bookmark_resource = BookmarkResource()
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -15,7 +15,7 @@ urlpatterns = patterns('',
     url(r'^new/$',                     BookmarkCreate.as_view(), name='bookmark_create'),
     url(r'^mine/$',                    MyBookmarks.as_view(),     name='bookmarks_list_mine'),
     url(r'^(?P<pk>\d+)/edit/$',        BookmarkEdit.as_view(),        name='bookmark_edit'),
-    (r'^api/', include(bookmark_resource.urls)),
+    # (r'^api/', include(bookmark_resource.urls)),
 
     # accounts
     (r'^accounts/',                    include('accounts.urls')),

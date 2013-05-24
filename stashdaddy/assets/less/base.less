@@ -10,6 +10,30 @@ body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+
+// Brand: website or project name
+// -------------------------
+.navbar .brand {
+  position: relative;
+  float: left;
+  display: block;
+  padding: 0;
+  width: 117px;
+  font-size: 20px;
+  font-weight: 200;
+  color: @navbarBrandColor;
+  text-shadow: 0 1px 0 @navbarBackgroundHighlight;
+  text-indent: -9999px;
+  background: url(/static/img/logo.png) no-repeat;
+  top: 10px;
+
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+
 // NAVIGATION
 // ----------
 

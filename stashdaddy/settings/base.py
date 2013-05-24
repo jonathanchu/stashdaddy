@@ -17,6 +17,10 @@ LANGUAGE_CODE = 'en-us'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+ADMINS = (
+    ('Jonathan Chu', 'jc@3atmospheres.com'),
+)
+
 
 # DATABASES
 DATABASES = postgresify()
@@ -67,16 +71,17 @@ INSTALLED_APPS = [
 
     # third-party packages
     'compressor',
-    'djcelery',
+    # 'djcelery',
     'django_forms_bootstrap',
     'gunicorn',
-    'kombu.transport.django',
+    # 'kombu.transport.django',
+    'raven.contrib.django.raven_compat',
     'south',
     'taggit',
     # 'tastypie',
 
     # stashdaddy apps
-    'accounts',
+    # 'accounts',
     'bookmarks',
     'core',
 ]
@@ -102,33 +107,9 @@ LOGGING = {
     }
 }
 
-# LOGGING = {
-#     'version': 1,
-#     'disable_existing_loggers': False,
-#     'filters': {
-#         'require_debug_false': {
-#             '()': 'django.utils.log.RequireDebugFalse'
-#         }
-#     },
-#     'handlers': {
-#         'mail_admins': {
-#             'level': 'ERROR',
-#             'filters': ['require_debug_false'],
-#             'class': 'django.utils.log.AdminEmailHandler'
-#         }
-#     },
-#     'loggers': {
-#         'django.request': {
-#             'handlers': ['mail_admins'],
-#             'level': 'ERROR',
-#             'propagate': True,
-#         },
-#     }
-# }
-
 # AUTH STUFF
 ACCOUNT_ACTIVATION_DAYS = 7
-AUTH_USER_MODEL = 'accounts.CustomUser'
+# AUTH_USER_MODEL = 'accounts.CustomUser'
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 TWITTER_CONSUMER_KEY = ''
 TWITTER_CONSUMER_SECRET = ''
@@ -153,3 +134,8 @@ COMPRESS_CSS_FILTERS = [
 COMPRESS_JS_FILTERS = [
     'compressor.filters.jsmin.JSMinFilter'
 ]
+
+# SENTRY
+RAVEN_CONFIG = {
+    'dsn': 'http://9f4ba557c12f4e409fe7da2098c0db26:4807ba1d40d240b184cc371719bf9bf6@0.0.0.0:9000/2',
+}
