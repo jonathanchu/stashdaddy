@@ -3,6 +3,7 @@ from django.views.generic import TemplateView
 
 from django.contrib import admin
 from bookmarks.views import BookmarkList, BookmarkCreate, MyBookmarks, BookmarkEdit
+from accounts.views import Login, Register
 # from bookmarks.api import BookmarkResource
 
 
@@ -20,6 +21,10 @@ urlpatterns = patterns('',
     # accounts
     (r'^accounts/',                    include('accounts.urls')),
 
+    url(r'^register/$',                Register.as_view(),                             name='register'),
+    url(r'^thanks/$',                  TemplateView.as_view(template_name="home.html"), name='thanks'),
+    url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
+    # url(r'^login/$',                   Login.as_view(), name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}, name='logout'),
     url(r'^admin/', include(admin.site.urls)),
 )

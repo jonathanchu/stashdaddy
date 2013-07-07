@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+  <div class="row row-signin">
+    <div class="span6">
+      <form method="post" action=".">
+        {% csrf_token %}
+
+          <div class="form-row">
+            {% if not form.this_is_the_login_form.errors %}{{ form.username.errors }}{% endif %}
+            <label for="id_username" class="required">{{ form.username.label }}:</label> {{ form.username }}
+          </div>
+          <div class="form-row">
+            {% if not form.this_is_the_login_form.errors %}{{ form.password.errors }}{% endif %}
+            <label for="id_password" class="required">{{ form.password.label }}</label> {{ form.password }}
+            <input type="hidden" name="this_is_the_login_form" value="1" />
+            <input type="hidden" name="next" value="{{ next }}" />
+          </div>
+
+      </form>
+    </div>
+  </div>
+{% endblock %}

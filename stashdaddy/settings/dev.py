@@ -6,6 +6,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 GAUGES_SITE_ID = False
 COMPRESS_ENABLED = False
 
+# SENTRY
+RAVEN_CONFIG = {
+    'dsn': 'http://9f4ba557c12f4e409fe7da2098c0db26:4807ba1d40d240b184cc371719bf9bf6@0.0.0.0:9000/2',
+}
+
 try:
     import debug_toolbar
 except ImportError:

@@ -61,6 +61,10 @@ TEMPLATE_CONTEXT_PROCESSORS = [
 
 # APPS
 INSTALLED_APPS = [
+    # django-suit needs to be before django.contrib.admin
+    'suit',
+
+    # django
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -109,6 +113,7 @@ LOGGING = {
 
 # AUTH STUFF
 ACCOUNT_ACTIVATION_DAYS = 7
+LOGIN_REDIRECT_URL = '/'
 # AUTH_USER_MODEL = 'accounts.CustomUser'
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 TWITTER_CONSUMER_KEY = ''
@@ -135,7 +140,37 @@ COMPRESS_JS_FILTERS = [
     'compressor.filters.jsmin.JSMinFilter'
 ]
 
-# SENTRY
-RAVEN_CONFIG = {
-    'dsn': 'http://9f4ba557c12f4e409fe7da2098c0db26:4807ba1d40d240b184cc371719bf9bf6@0.0.0.0:9000/2',
+# DJANGO-SUIT CONFIG
+SUIT_CONFIG = {
+    # header
+    'ADMIN_NAME': 'Stashdaddy Admin',
+    # 'HEADER_DATE_FORMAT': 'l, j. F Y',
+    # 'HEADER_TIME_FORMAT': 'H:i',
+
+    # forms
+    # 'SHOW_REQUIRED_ASTERISK': True,  # Default True
+    # 'CONFIRM_UNSAVED_CHANGES': True, # Default True
+
+    # Parameter also accepts url name
+    # 'SEARCH_URL': 'admin:auth_user_changelist',
+    # Set to empty string if you want to hide search from menu
+    # 'SEARCH_URL': ''
+
+    # menu
+    # 'SEARCH_URL': '/admin/auth/user/',
+    # 'MENU_ICONS': {
+    #    'sites': 'icon-leaf',
+    #    'auth': 'icon-lock',
+    # },
+    # 'MENU_OPEN_FIRST_CHILD': True, # Default True
+    'MENU_EXCLUDE': ('auth.group',),
+    # 'MENU': (
+    #     'sites',
+    #     {'app': 'auth', 'icon':'icon-lock', 'models': ('user', 'group')},
+    #     {'label': 'Settings', 'icon':'icon-cog', 'models': ('auth.user', 'auth.group')},
+    #     {'label': 'Support', 'icon':'icon-question-sign', 'url': '/support/'},
+    # ),
+
+    # misc
+    # 'LIST_PER_PAGE': 15
 }
