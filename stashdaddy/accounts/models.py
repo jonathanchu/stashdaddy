@@ -1,46 +1,30 @@
 from __future__ import unicode_literals
 import warnings
 
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin, UserManager, AnonymousUser
+from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.core.mail import send_mail
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils import timezone
 
 
-class CustomUserManager(BaseUserManager):
-    """
-    A thin wrapper around the default BaseUserManager
-    """
-    def create_user(self, email=None, password=None):
-        """
-        Creates and saves a User with the given email and password.
-        """
-        now = timezone.now()
-        if not email:
-            raise ValueError('The given email must be set')
-        email = UserManager.normalize_email(email)
-        user = self.model(email=email,
-                          is_staff=False, is_active=True, is_superuser=False,
-                          last_login=now, date_joined=now)
-
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_superuser(self, email, password):
-        u = self.create_user(email, password)
-        u.is_staff = True
-        u.is_active = True
-        u.is_superuser = True
-        u.save(using=self._db)
-        return u
-
-
 class CustomUser(AbstractBaseUser, PermissionsMixin):
+    """
+    A custom user class that basically mirrors Django's `AbstractUser` class
+    and doesn't force `first_name` or `last_name` with sensibilities for
+    international names.
+
+    http://www.w3.org/International/questions/qa-personal-names
+    """
+    username = models.CharField(_('username'), max_length=30, unique=True,
+        help_text=_('Required. 30 characters or fewer. Letters, numbers and '
+                    '@/./+/-/_ characters'),
+        validators=[
+            validators.RegexValidator(re.compile('^[\w.@+-]+$'), _('Enter a valid username.'), 'invalid')
+        ])
+    full_name = models.CharField(_('full name'), max_length=254, blank=True)
+    short_name = models.CharField(_('short name'), max_length=30, blank=True)
     email = models.EmailField(_('email address'), max_length=254, unique=True)
-    first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    last_name = models.CharField(_('last name'), max_length=30, blank=True)
     is_staff = models.BooleanField(_('staff status'), default=False,
         help_text=_('Designates whether the user can log into this admin '
                     'site.'))
@@ -49,16 +33,16 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
                     'active. Unselect this instead of deleting accounts.'))
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
-    objects = CustomUserManager()
+    objects = UserManager()
 
-    USERNAME_FIELD = 'email'
-    # REQUIRED_FIELDS = ['email']
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
 
     class Meta:
         verbose_name = _('user')
         verbose_name_plural = _('users')
 
-    def __unicode__(self):
+    def __unicode__(self)
         return self.email
 
     def get_absolute_url(self):
@@ -68,12 +52,12 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
         """
         Returns the first_name plus the last_name, with a space in between.
         """
-        full_name = '%s %s' % (self.first_name, self.last_name)
+        full_name = self.full_name
         return full_name.strip()
 
     def get_short_name(self):
         "Returns the short name for the user."
-        return self.first_name
+        return self.short_name.strip()
 
     def email_user(self, subject, message, from_email=None):
         """

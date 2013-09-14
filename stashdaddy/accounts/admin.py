@@ -16,8 +16,8 @@ class CustomUserAdmin(admin.ModelAdmin):
     add_form_template = 'admin/auth/user/add_form.html'
     change_user_password_template = None
     fieldsets = (
-        (None, {'fields': ('email', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name')}),
+        (None, {'fields': ('username', 'password')}),
+        (_('Personal info'), {'fields': ('full_name', 'short_name')}),
         (_('Permissions'), {'fields': ('is_active', 'is_staff', 'is_superuser',
                                        'groups', 'user_permissions')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
@@ -31,10 +31,10 @@ class CustomUserAdmin(admin.ModelAdmin):
     form = UserChangeForm
     add_form = UserCreationForm
     change_password_form = AdminPasswordChangeForm
-    list_display = ('email', 'first_name', 'last_name', 'is_staff')
+    list_display = ('username', 'email', 'full_name', 'short_name', 'is_staff')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
-    search_fields = ('email', 'first_name', 'last_name', 'email')
-    ordering = ('email',)
+    search_fields = ('username', 'full_name', 'short_name', 'email')
+    ordering = ('username',)
     filter_horizontal = ('groups', 'user_permissions',)
 
     def get_fieldsets(self, request, obj=None):
