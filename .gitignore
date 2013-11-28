@@ -36,3 +36,6 @@ celerybeat-schedule.db
 
 # Mac OS X specific
 .DS_Store
+
+# rope project
+.ropeproject
