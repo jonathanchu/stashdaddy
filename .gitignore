@@ -27,9 +27,9 @@ pip-log.txt
 *.pot
 
 # Project specific
-stashdaddy/media/
-stashdaddy/assets/CACHE/
-stashdaddy/static/
+media/
+assets/CACHE/
+static/
 src/
 celerybeat-schedule.db
 *.db
