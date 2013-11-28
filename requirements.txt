@@ -12,6 +12,7 @@ django-forms-bootstrap==2.0.3.post2
 django-heroku-postgresify==0.3
 django-storages==1.1.8
 django-taggit==0.11.1
+djangorestframework==2.3.9
 gunicorn==18.0
 newrelic==2.6.0.5
 psycopg2==2.5.1
